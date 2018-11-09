@@ -16,11 +16,14 @@ $("#button-submit").on("click", function(event) {
     var checker = $(this).attr("owner");
     if(localStorage.getItem("user") === checker){
         $("#upd-button").hide();
+        $("#del-button").hide();
     }
     else{
-        $("#upd-button").show();  
+        $("#upd-button").show();
+        $("#del-button").show();  
     }
  });
+ 
 //when page loads, check localSorage for user if it has any input or not
  window.onload = function(){
     if(localStorage.user !== null) {
@@ -29,6 +32,8 @@ $("#button-submit").on("click", function(event) {
         $("#input-user").hide();
         $("#input-firstname").hide();
         $("#input-lastname").hide();
+        $("label").hide();
+        $("#button-submit").hide();
     }
  }
  
