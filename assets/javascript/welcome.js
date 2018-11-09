@@ -25,6 +25,10 @@ $("#button-submit").on("click", function(event) {
         $("#del-button").show();  
     }
  });
+
+ $("#api_search").on("click", function(event){
+    window.location.href= "search.html" ;
+ });
  
 //when page loads, check localSorage for user if it has any input or not
  window.onload = function(){
