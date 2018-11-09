@@ -26,10 +26,10 @@ $("#button-submit").on("click", function(event) {
  
 //when page loads, check localSorage for user if it has any input or not
  window.onload = function(){
-    if(localStorage.user !== null && localStorage.user !== "undefined") {
+    if(localStorage.user !== null || localStorage.user !== "undefined") {
         // this will only work if the token is set in the localStorage
         $("h3").text("Welcome Back " + localStorage.user);
-        $("#input-user").hide();
+        $("#input-username").hide();
         $("#input-firstname").hide();
         $("#input-lastname").hide();
         $("label").hide();
