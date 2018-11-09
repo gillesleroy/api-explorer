@@ -96,13 +96,14 @@ function displayApiInfo() {
     // console.log(apiKey);
     // console.log(apiParam);
 
-    $("#nav").append(
+    $("#nav-to-form").append(
         addObj({
             type:  "button"
             ,class: "classToForm"
             ,text: savedButtons[i].name
             ,attr: [
                      { a: "api-name", v: savedButtons[i].name}
+                    ,{ a: "id", v: "edit-button"}
                    ]
             })
         );
