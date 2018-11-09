@@ -62,7 +62,7 @@ function displayApiInfo() {
   
     $("#input-name").val(apiName);
     $("#input-description").val(apiDescription);
-    $("#input-owner").val(apiOwner);
+  //  $("#input-owner").val(apiOwner);
     $("#input-authors").val(apiAuthors);
     $("#input-docurl").val(apiDocurl);
     $("#input-url").val(apiURL);
@@ -80,7 +80,9 @@ function displayApiInfo() {
     event.preventDefault();
     var apiName = $("#input-name").val().trim();
     var apiDescription = $("#input-description").val().trim();
-    var apiOwner = $("#input-owner").val().trim();
+  //  var apiOwner = $("#input-owner").val().trim();
+    var apiOwner = "Gilles";
+    
     var apiAuthors = $("#input-authors").val().trim();
     var apiDocurl = $("#input-docurl").val().trim();
     var apiUrl = $("#input-url").val().trim();
@@ -116,7 +118,7 @@ function displayApiInfo() {
         localStorage.setItem('names', JSON.stringify(names));       
         $("#input-name").val("");
         $("#input-description").val("");
-        $("#input-owner").val("");
+        //$("#input-owner").val("");
         $("#input-authors").val("");
         $("#input-docurl").val("");
         $("#input-url").val("");
