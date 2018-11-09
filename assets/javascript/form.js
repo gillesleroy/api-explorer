@@ -130,7 +130,9 @@ $("#upd-button").on("click", function(event) {
     event.preventDefault();
     var apiName = $("#input-name").val().trim();
     var apiDescription = $("#input-description").val().trim();
-    var apiOwner = $("#input-owner").val().trim();
+    //var apiOwner = $("#input-owner").val().trim();
+    var apiOwner = "Gilles";
+    
     var apiAuthors = $("#input-authors").val().trim();
     var apiDocurl = $("#input-docurl").val().trim();   
     var apiUrl = $("#input-url").val().trim();
