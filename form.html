@@ -23,25 +23,31 @@
 <body>
     <!--The navigation menu.-->
     
-        <header><ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">HOME</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">API SEARCH</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">API ENTRY</a>
-                </li>
-            </ul></header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="welcome.html">API Explorer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            <a class="nav-item nav-link" href="welcome.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="search.html">Explore</a>
+            <a class="nav-item nav-link active" href="form.html">Contribute</a>
+            </div>
+        </div>
+</nav>
     
 
 
     <!--The entry bars.-->
     <div class="jumbotron">
         
-            <center><h2>Api Entry</h2></center>
+      
         
+            <center><button id="add-button" type="submit" class="btn btn-primary">Add</button>
+                <button id="upd-button" type="submit" class="btn btn-primary">Modify</button>
+                <button id="del-button" type="submit" class="btn btn-primary">Delete</button>
+            </center>
         
             <form id="api_form">
                 <div class="form-group">
@@ -80,7 +86,6 @@
                         <label for="comment">Description:</label>
                         <textarea class="form-control" rows="5" id="comment"></textarea>
                       </div>
-            <center><button type="submit" class="btn btn-primary">Submit</button></center>
         </form>
     </div>
 
