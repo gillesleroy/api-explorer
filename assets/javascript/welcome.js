@@ -8,7 +8,9 @@ $("#button-submit").on("click", function(event) {
 
     localStorage.setItem("user", userName);
     localStorage.setItem("first", firstName);
-    localStorage.setItem("last", lastName);       
+    localStorage.setItem("last", lastName);
+    
+    window.location.href = "welcome.html";
  });
 
 //click on api buttons to show or hide update button if its the owner or not
@@ -26,7 +28,7 @@ $("#button-submit").on("click", function(event) {
  
 //when page loads, check localSorage for user if it has any input or not
  window.onload = function(){
-    if(localStorage.user !== null || localStorage.user !== "undefined") {
+    if(localStorage.user) {
         // this will only work if the token is set in the localStorage
         $("h3").text("Welcome Back " + localStorage.user);
         $("#input-username").hide();
