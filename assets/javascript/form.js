@@ -211,7 +211,7 @@ $("#upd-button").on("click", function(event) {
  function(snapshot) {
      // console.log(snapshot.val());
      topics = snapshot.val().apis;     
-     renderButtons(topics);
+     // renderButtons(topics);
      //  renderButtons(snapshot.val().names);
      },
 
