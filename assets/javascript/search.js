@@ -34,6 +34,8 @@ var names = [];
 var apiIndex;
 
 function displayApiInfo() {
+    $("#nav-to-form").html("");
+
     $("#display-name").text("");
     $("#display-description").text("");
     $("#display-owner").text("");
@@ -100,9 +102,9 @@ function displayApiInfo() {
         addObj({
             type:  "button"
             ,class: "classToForm"
-            ,text: savedButtons[i].name
+            ,text: "Edit"
             ,attr: [
-                     { a: "api-name", v: savedButtons[i].name}
+                     { a: "api-name", v: apiName}
                     ,{ a: "id", v: "edit-button"}
                    ]
             })
@@ -195,8 +197,9 @@ function renderButtons(savedButtons) {
 $(document).on("click", ".classApi", displayApiInfo);
 
 $(document).on("click", ".classToForm", function() {
-    var url = "https://gillesleroy.github.io/api-explore/form.html?p_apiname="+$(this).attr("api-name");
-    window.location(url);
+    // var url = "https://gillesleroy.github.io/api-explore/form.html?p_apiname="+$(this).attr("api-name");
+    var url = "form.html?p_apiname="+$(this).attr("api-name");
+    location.href = url;
     }
 );
 
