@@ -11,7 +11,7 @@
     
         <!--The css link.-->
         <link rel="stylesheet" href="assets/css/welcome.css">
-        <link rel="stylesheet" href="assets/css/reset2.css">
+        <link rel="stylesheet" href="assets/css/reset.css">
         
         <!--Javascript and Jquery (lib).-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -43,6 +43,7 @@
                 
                 <!--The giphys.-->
                 <div id="left"><img id="img_left" src="assets/images/spongebobleft.gif" alt="Spongebob"></div>
+                <div id="right"><img id="img_right" src="assets/images/spongebobright.gif" alt="Spongebob"></div>
             
                 <!--The search button.-->
     <center>
@@ -51,30 +52,32 @@
        <br><br>
 
        <!--The registration forms.-->
-           <center><form id="reg_form">
-                    <h3>Register to contribute!</h3>
-                    <br>
-                    <label>Username: </label>
-                        <input type="text" id="input-username" placeholder="ex: ApiGod">
-                        <br>
-                        <label>First Name:</label>
-                        <input type="text" id="input-firstname" placeholder="ex: John">
-                        <br>
-                        <label>Last Name:</label>
-                        <input type="text" id="input-lastname" placeholder="ex: Doe">
-                        <br><br>
-                        <button type="submit" id="button-submit">Submit</button>
-                    </form>
+
+           <center><div id="background"><form id="reg_form">
+            <h3>Register to contribute!</h3>
+            <br>
+            <label>Username: </label>
+                <input type="text" id="input-username" placeholder="ex: ApiGod">
+                <br>
+                <label>First Name:</label>
+                <input type="text" id="input-firstname" placeholder="ex: John">
+                <br>
+                <label>Last Name:</label>
+                <input type="text" id="input-lastname" placeholder="ex: Doe">
+                <br><br>
+                <button type="submit" id="button-submit">Submit</button>
+            </form></div>
                     <br></center>
                 </div>  
               
 <!--The about us section.-->
     <div class="jumbotron">
-    <h2 id="about_us">About Us</h2>
+    <h1 id="about_us">About Us</h1>
     <hr class="my-4">
-    <p>We like Apis!</p>
-    <p>You like Apis!</p>
-    <p>Search our Apis! or Contribute!</p>
+
+    <b><p>We like Apis!</p>
+        <p>You like Apis!</p>
+        <p>Search our Apis! or Contribute!</p></b>
 </div>
 
 <!--Firebase and Javascript.-->
