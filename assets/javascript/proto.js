@@ -182,20 +182,29 @@ function displayApiInfo() {
     console.log(queryURL);
     // console.log(queryURLnew);
 
-    $.ajax({
-      url: queryURL,
-      method: "GET",
-    //   headers: {
-    //     Authorization:"6e3bf298-dadd-11e8-83ef-0242ac130004-6e3bf3a6-dadd-11e8-83ef-0242ac130004"
-    //      }
-    }).then(function(response) {
-      console.log(response);
+    if (apiName === "stormglass")
+    {
+        $.ajax({
+            url: queryURL,
+            method: "GET",
+            headers: {
+              Authorization:"6e3bf298-dadd-11e8-83ef-0242ac130004-6e3bf3a6-dadd-11e8-83ef-0242ac130004"
+               }
+          }).then(function(response) {
+            console.log(response);
+        });
+    }
+    else {
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+          }).then(function(response) {
+            console.log(response);
+         //   var results = response.data;    
+        //    renderApiIfnfo(results);
+          });
+    }
 
-   //   var results = response.data;
-
-  //    renderApiIfnfo(results);
-
-    });
   };
 
 //  renderButtons();

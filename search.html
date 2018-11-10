@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-Language" content="en">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
@@ -10,48 +12,59 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="assets/javascript/lib.js"></script>    
 <!-- Override CSS file -->
-<link rel="stylesheet" href = "assets/css/style.css">
+<link rel="stylesheet" href = "assets/css/search.css">
 </head>
 <body>
 <div>
     <!-- Start Header -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="welcome.html">API Explorer</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link active" href="#">Explore</a>
-                <a class="nav-item nav-link" href="#">Contribute</a>
+                <a class="nav-item nav-link" href="welcome.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="search.html">Explore</a>
+                <a class="nav-item nav-link" href="form.html">Contribute</a>
                 </div>
             </div>
     </nav>
     <!-- End Header -->
+
+
     <section>
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>API Explorer</h2>
-                    <p>To start click a button on the left panel to start</p>
+            <div>
+                <div class="banner" class="col-md-10">
+                    <img id="banner-picture" src="assets/images/search.png" height="50" width="50">   
+                    <div class="col-md-8">
+                        <div id="banner-content">
+                            <center><h2>API Explorer</h2>    
+                                <span>To start, click a button to get a view of an API.</span></center>
+                        </div>
+                    </div>
                 </div>
-            </div>
             <div class="row">
                 <div class="col-md-3">
                     <div class="card">
                         <h5 class="card-header">Explore</h5>
                         <div class="card-body" id="api-list">
-                            <a href="#" class="btn btn-primary">I AM AN API</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-9">
                         <div class="card">
-                            <h5 class="card-header">API Profile</h5>
+                            <div class="card-header" id="nav-to-form">
+                                    <h5 id="profile-header">API Profile</h5>
+                                    <!--!!My Pretty Button GIl!!<button id="edit-button">Edit</button> -->
+                            </div>
                             <div class="card-body">
                                 <h3 id="display-name">API Name</h3>
                                 <table style="width: 100%">
+                                    <tr>
+                                        <td id="nav"></td>
+                                    </tr>
                                     <tr>
                                         <th>API Description:</th>
                                         <td id="display-description"></td>

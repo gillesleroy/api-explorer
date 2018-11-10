@@ -34,6 +34,8 @@ var names = [];
 var apiIndex;
 
 function displayApiInfo() {
+    $("#nav-to-form").html("");
+
     $("#display-name").text("");
     $("#display-description").text("");
     $("#display-owner").text("");
@@ -55,6 +57,7 @@ function displayApiInfo() {
     var apiSample = $(this).attr("api-sample");   
     apiIndex = $(this).attr("api-index"); 
     // var apiKey = $("#input-key").val().trim();
+    console.log(JSON.parse(localStorage.getItem('names')));
     names = JSON.parse(localStorage.getItem('names'));
     if (names === null)
     {
@@ -95,6 +98,23 @@ function displayApiInfo() {
     // console.log(apiURL);
     // console.log(apiKey);
     // console.log(apiParam);
+    // alert("user="+localStorage.getItem("user"));
+    // alert("apiOwner="+apiOwner);
+    if (apiOwner ===localStorage.getItem("user"))
+    {
+        $("#nav-to-form").append(
+            addObj({
+                type:  "button"
+                ,class: "classToForm"
+                ,text: "Edit"
+                ,attr: [
+                         { a: "api-name", v: apiName}
+                        ,{ a: "id", v: "edit-button"}
+                       ]
+                })
+            );    
+    }
+    
     var queryURL = apiURL+apiKey+apiParam;
     console.log(queryURL);
     // console.log(queryURLnew);
@@ -121,26 +141,50 @@ function renderButtons(savedButtons) {
     // Looping through the array of topics
     for (var i = 0; i < savedButtons.length; i++){
         $("#api-list").append(
-                                addObj({
-                                    type:  "button"
-                                    ,class: "classApi"
-                                    ,text: savedButtons[i].name
-                                    ,attr: [
-                                             { a: "api-name", v: savedButtons[i].name}
-                                           , { a: "api-description", v: savedButtons[i].description}
-                                           , { a: "api-owner", v: savedButtons[i].owner}
-                                           , { a: "api-authors", v: savedButtons[i].authors}
-                                           , { a: "api-docurl", v: savedButtons[i].docurl}
-                                           , { a: "api-url", v: savedButtons[i].url}
-                                           , { a: "api-param", v: savedButtons[i].param}
-                                           , { a: "api-sample", v: savedButtons[i].sample}
-                                           , { a: "api-index", v: i}
-                                           ]
-                                    }
-                                )
+            addObj({
+                type:  "button"
+                ,class: "classApi"
+                ,text: savedButtons[i].name
+                ,attr: [
+                            { a: "api-name", v: savedButtons[i].name}
+                        , { a: "api-description", v: savedButtons[i].description}
+                        , { a: "api-owner", v: savedButtons[i].owner}
+                        , { a: "api-authors", v: savedButtons[i].authors}
+                        , { a: "api-docurl", v: savedButtons[i].docurl}
+                        , { a: "api-url", v: savedButtons[i].url}
+                        , { a: "api-param", v: savedButtons[i].param}
+                        , { a: "api-sample", v: savedButtons[i].sample}
+                        , { a: "api-index", v: i}
+                        ]
+                }
+            )
 
         )}
   }
+
+  $("#edit-button").on("click", function(event) {
+    event.preventDefault();
+    var apiName = $("#input-name").val().trim();
+    names = JSON.parse(localStorage.getItem('names'));
+    if (names === null)
+    {
+        names = namesInit;
+        // console.log(names[0].name);
+    }
+    topics.splice(apiIndex,1);
+    database.ref().set({
+                        apis: topics
+                        });           
+    for (var i=0;i<names.length;i++)
+    {
+        if (names[i].name === apiName)
+        {
+            names.splice(i,1);
+            break;
+        }
+    }        
+    localStorage.setItem('names', JSON.stringify(names));       
+});
 
  // Firebase watcher + initial loader HINT: .on("value")
  database.ref().on("value", 
@@ -156,3 +200,16 @@ function renderButtons(savedButtons) {
         });
 
 $(document).on("click", ".classApi", displayApiInfo);
+
+$(document).on("click", "#frameSample", function (){
+    //alert("Hello");
+    window.open(url=$(this).attr("src"));
+});
+
+$(document).on("click", ".classToForm", function() {
+    // var url = "https://gillesleroy.github.io/api-explore/form.html?p_apiname="+$(this).attr("api-name");
+    var url = "form.html?p_apiname="+$(this).attr("api-name");
+    location.href = url;
+    }
+);
+
