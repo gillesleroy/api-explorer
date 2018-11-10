@@ -55,6 +55,7 @@ function displayApiInfo() {
     var apiSample = $(this).attr("api-sample");   
     apiIndex = $(this).attr("api-index"); 
     // var apiKey = $("#input-key").val().trim();
+    console.log(JSON.parse(localStorage.getItem('names')));
     names = JSON.parse(localStorage.getItem('names'));
     if (names === null)
     {
@@ -134,23 +135,23 @@ function renderButtons(savedButtons) {
     // Looping through the array of topics
     for (var i = 0; i < savedButtons.length; i++){
         $("#api-list").append(
-                                addObj({
-                                    type:  "button"
-                                    ,class: "classApi"
-                                    ,text: savedButtons[i].name
-                                    ,attr: [
-                                             { a: "api-name", v: savedButtons[i].name}
-                                           , { a: "api-description", v: savedButtons[i].description}
-                                           , { a: "api-owner", v: savedButtons[i].owner}
-                                           , { a: "api-authors", v: savedButtons[i].authors}
-                                           , { a: "api-docurl", v: savedButtons[i].docurl}
-                                           , { a: "api-url", v: savedButtons[i].url}
-                                           , { a: "api-param", v: savedButtons[i].param}
-                                           , { a: "api-sample", v: savedButtons[i].sample}
-                                           , { a: "api-index", v: i}
-                                           ]
-                                    }
-                                )
+            addObj({
+                type:  "button"
+                ,class: "classApi"
+                ,text: savedButtons[i].name
+                ,attr: [
+                            { a: "api-name", v: savedButtons[i].name}
+                        , { a: "api-description", v: savedButtons[i].description}
+                        , { a: "api-owner", v: savedButtons[i].owner}
+                        , { a: "api-authors", v: savedButtons[i].authors}
+                        , { a: "api-docurl", v: savedButtons[i].docurl}
+                        , { a: "api-url", v: savedButtons[i].url}
+                        , { a: "api-param", v: savedButtons[i].param}
+                        , { a: "api-sample", v: savedButtons[i].sample}
+                        , { a: "api-index", v: i}
+                        ]
+                }
+            )
 
         )}
   }

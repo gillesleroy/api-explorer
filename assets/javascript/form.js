@@ -7,7 +7,12 @@ var config = {
     storageBucket: "api-exploration-838a6.appspot.com",
     messagingSenderId: "526245276523"
   };
-
+  var namesInit = [{
+    name: "dummy"
+  , value: ""
+  }];
+  var names = [];
+  var apiIndex;
   firebase.initializeApp(config);
   var database = firebase.database();
 
@@ -45,7 +50,8 @@ function displayApiInfo() {
     var apiSample = $(this).attr("api-sample");   
     apiIndex = $(this).attr("api-index"); 
     // var apiKey = $("#input-key").val().trim();
-    names = JSON.parse(localStorage.getItem('names'));
+   
+    names = JSON.parse(localStorage.getItem("names"));
     if (names === null)
     {
         names = namesInit;
@@ -80,8 +86,8 @@ function displayApiInfo() {
     event.preventDefault();
     var apiName = $("#input-name").val().trim();
     var apiDescription = $("#input-description").val().trim();
-  //  var apiOwner = $("#input-owner").val().trim();
-    var apiOwner = "Gilles";
+    var apiOwner = localStorage.user;
+   
     
     var apiAuthors = $("#input-authors").val().trim();
     var apiDocurl = $("#input-docurl").val().trim();
@@ -91,6 +97,7 @@ function displayApiInfo() {
     var apiKey = $("#input-key").val().trim();
     if (isValid(apiName))
     {
+        $("#errorMsg").empty();
         names = JSON.parse(localStorage.getItem('names'));
         if (names === null)
         {
@@ -126,6 +133,9 @@ function displayApiInfo() {
         $("#input-sample").val("");
         $("#input-key").val("");
     }
+    else{
+        $("#errorMsg").html("<h2>"+"API NAME ALREADY EXISTS!!!!"+"</h2>");
+    }
 });
 
 $("#upd-button").on("click", function(event) {
@@ -133,7 +143,7 @@ $("#upd-button").on("click", function(event) {
     var apiName = $("#input-name").val().trim();
     var apiDescription = $("#input-description").val().trim();
     //var apiOwner = $("#input-owner").val().trim();
-    var apiOwner = "Gilles";
+    var apiOwner = localStorage.user;
     
     var apiAuthors = $("#input-authors").val().trim();
     var apiDocurl = $("#input-docurl").val().trim();   
