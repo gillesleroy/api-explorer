@@ -7,6 +7,7 @@ var config = {
     storageBucket: "api-exploration-838a6.appspot.com",
     messagingSenderId: "526245276523"
   };
+<<<<<<< HEAD
   var namesInit = [{
     name: "dummy"
   , value: ""
@@ -15,6 +16,14 @@ var config = {
   var apiIndex;
   firebase.initializeApp(config);
   var database = firebase.database();
+=======
+
+firebase.initializeApp(config);
+var database = firebase.database();
+
+var topics = [];
+var apiIndex;
+>>>>>>> c7265546478774109418bb1dc8b050c45b2ce904
 
 function isValid(inputVal)
 {
@@ -38,17 +47,36 @@ function isValid(inputVal)
 return (isGood);
 }
 
-function displayApiInfo() {
+function displayApiInfo(apiNameVal) {
     // var limit = 10;
-    var apiName = $(this).attr("api-name");
-    var apiDescription = $(this).attr("api-description");
-    var apiOwner = $(this).attr("api-owner");
-    var apiAuthors = $(this).attr("api-authors");
-    var apiDocurl = $(this).attr("api-docurl");
-    var apiURL = $(this).attr("api-url");
-    var apiParam = $(this).attr("api-param");   
-    var apiSample = $(this).attr("api-sample");   
-    apiIndex = $(this).attr("api-index"); 
+   // var apiName = $(this).attr("api-name");
+    // var apiName = $(this).attr("api-name");
+//     var apiDescription = $(this).attr("api-description");
+//   //  var apiOwner = $(this).attr("api-owner");
+//     var apiAuthors = $(this).attr("api-authors");
+//     var apiDocurl = $(this).attr("api-docurl");
+//     var apiURL = $(this).attr("api-url");
+//     var apiParam = $(this).attr("api-param");   
+//     var apiSample = $(this).attr("api-sample");   
+//     apiIndex = $(this).attr("api-index"); 
+
+    for (var i=0;i<topics.length;i++)
+    {
+        if (topics[i].name === apiNameVal)
+        {
+        var apiName = topics[i].name;
+        var apiDescription = topics[i].description;
+    //  var apiOwner = $(this).attr("api-owner");
+        var apiAuthors = topics[i].authors;
+        var apiDocurl = topics[i].docurl;
+        var apiURL =topics[i].url;
+        var apiParam = topics[i].param;   
+        var apiSample = topics[i].sample;   
+        apiIndex = i;
+        break;
+        }
+    }
+
     // var apiKey = $("#input-key").val().trim();
    
     names = JSON.parse(localStorage.getItem("names"));
@@ -86,9 +114,7 @@ function displayApiInfo() {
     event.preventDefault();
     var apiName = $("#input-name").val().trim();
     var apiDescription = $("#input-description").val().trim();
-    var apiOwner = localStorage.user;
-   
-    
+    var apiOwner = localStorage.user; 
     var apiAuthors = $("#input-authors").val().trim();
     var apiDocurl = $("#input-docurl").val().trim();
     var apiUrl = $("#input-url").val().trim();
@@ -123,15 +149,15 @@ function displayApiInfo() {
                     value: apiKey 
               });
         localStorage.setItem('names', JSON.stringify(names));       
-        $("#input-name").val("");
-        $("#input-description").val("");
-        //$("#input-owner").val("");
-        $("#input-authors").val("");
-        $("#input-docurl").val("");
-        $("#input-url").val("");
-        $("#input-param").val("");
-        $("#input-sample").val("");
-        $("#input-key").val("");
+        // $("#input-name").val("");
+        // $("#input-description").val("");
+        // //$("#input-owner").val("");
+        // $("#input-authors").val("");
+        // $("#input-docurl").val("");
+        // $("#input-url").val("");
+        // $("#input-param").val("");
+        // $("#input-sample").val("");
+        // $("#input-key").val("");
     }
     else{
         $("#errorMsg").html("<h2>"+"API NAME ALREADY EXISTS!!!!"+"</h2>");
@@ -221,16 +247,41 @@ $("#upd-button").on("click", function(event) {
     localStorage.setItem('names', JSON.stringify(names));       
 });
 
- database.ref().on("value", 
- function(snapshot) {
-     // console.log(snapshot.val());
-     topics = snapshot.val().apis;     
-     // renderButtons(topics);
-     //  renderButtons(snapshot.val().names);
-     },
+function getUrlParam(param)
+{
+    var url = window.location.search.substring(1);
+    var urlVar = url.split('&');
+    // alert("urlVar="+urlVar);
+    for (var i = 0; i < urlVar.length; i++) 
+        {
+            var urlParam = urlVar[i].split('=');
+            if (urlParam[0] == param) 
+            {
+                return urlParam[1];
+            }
+        }   
+}
 
-     function(errorObject) {
-     console.log("The read failed: " + errorObject.code);
-     });
+database.ref().on("value", 
+function(snapshot) {
+    // console.log(snapshot.val());
+    topics = snapshot.val().apis; 
+    // console.log(topics[0].name);    
+    displayApiInfo(getUrlParam("p_apiname"));
+    // renderButtons(topics);
+    //  renderButtons(snapshot.val().names);
+    },
 
-$(document).on("click", ".classApi", displayApiInfo);
+    function(errorObject) {
+    console.log("The read failed: " + errorObject.code);
+    });
+
+// $( document ).ready(function() {
+//     // console.log( "ready!" );
+//     // alert(getUrlParam("p_apiname"));
+
+//     // alert(getUrlParam(topics[0].name));
+//     displayApiInfo(getUrlParam("p_apiname"));
+//  });
+
+// $(document).on("click", ".classApi", displayApiInfo);
