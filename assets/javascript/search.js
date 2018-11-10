@@ -201,6 +201,11 @@ function renderButtons(savedButtons) {
 
 $(document).on("click", ".classApi", displayApiInfo);
 
+$(document).on("click", "#frameSample", function (){
+    //alert("Hello");
+    window.open(url=$(this).attr("src"));
+});
+
 $(document).on("click", ".classToForm", function() {
     // var url = "https://gillesleroy.github.io/api-explore/form.html?p_apiname="+$(this).attr("api-name");
     var url = "form.html?p_apiname="+$(this).attr("api-name");
