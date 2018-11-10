@@ -103,8 +103,8 @@ function displayApiInfo(apiNameVal) {
     var apiName = $("#input-name").val().trim();
     var apiDescription = $("#input-description").val().trim();
   //  var apiOwner = $("#input-owner").val().trim();
-    var apiOwner = "Gilles";
-    
+    // var apiOwner = "Gilles";
+    var apiOwner = localStorage.getItem("user");    
     var apiAuthors = $("#input-authors").val().trim();
     var apiDocurl = $("#input-docurl").val().trim();
     var apiUrl = $("#input-url").val().trim();
@@ -155,8 +155,8 @@ $("#upd-button").on("click", function(event) {
     var apiName = $("#input-name").val().trim();
     var apiDescription = $("#input-description").val().trim();
     //var apiOwner = $("#input-owner").val().trim();
-    var apiOwner = "Gilles";
-    
+    // var apiOwner = "Gilles";
+    var apiOwner = localStorage.getItem("user");  
     var apiAuthors = $("#input-authors").val().trim();
     var apiDocurl = $("#input-docurl").val().trim();   
     var apiUrl = $("#input-url").val().trim();

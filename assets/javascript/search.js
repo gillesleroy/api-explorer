@@ -97,19 +97,23 @@ function displayApiInfo() {
     // console.log(apiURL);
     // console.log(apiKey);
     // console.log(apiParam);
-
-    $("#nav-to-form").append(
-        addObj({
-            type:  "button"
-            ,class: "classToForm"
-            ,text: "Edit"
-            ,attr: [
-                     { a: "api-name", v: apiName}
-                    ,{ a: "id", v: "edit-button"}
-                   ]
-            })
-        );
-
+    // alert("user="+localStorage.getItem("user"));
+    // alert("apiOwner="+apiOwner);
+    if (apiOwner ===localStorage.getItem("user"))
+    {
+        $("#nav-to-form").append(
+            addObj({
+                type:  "button"
+                ,class: "classToForm"
+                ,text: "Edit"
+                ,attr: [
+                         { a: "api-name", v: apiName}
+                        ,{ a: "id", v: "edit-button"}
+                       ]
+                })
+            );    
+    }
+    
     var queryURL = apiURL+apiKey+apiParam;
     console.log(queryURL);
     // console.log(queryURLnew);
