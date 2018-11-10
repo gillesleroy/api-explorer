@@ -7,7 +7,6 @@ var config = {
     storageBucket: "api-exploration-838a6.appspot.com",
     messagingSenderId: "526245276523"
   };
-<<<<<<< HEAD
   var namesInit = [{
     name: "dummy"
   , value: ""
@@ -16,14 +15,6 @@ var config = {
   var apiIndex;
   firebase.initializeApp(config);
   var database = firebase.database();
-=======
-
-firebase.initializeApp(config);
-var database = firebase.database();
-
-var topics = [];
-var apiIndex;
->>>>>>> c7265546478774109418bb1dc8b050c45b2ce904
 
 function isValid(inputVal)
 {
