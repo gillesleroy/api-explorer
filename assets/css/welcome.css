@@ -3,19 +3,49 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#left {
+#img_left {
 margin-bottom: -100px;
-height: 200px;
-width: 200px;
+max-height: 200px;
+max-width: 200px;
 float: left;
+border-style: solid;
+border-width: 5px;
+border-color: red;
 }
 
-#right {
+#img_right {
     margin-bottom: -100px;
-    height: 200px;
-    width: 200px;
+    max-height: 200px;
+    max-width: 200px;
     float: right;
+    border-style: solid;
+border-width: 5px;
+border-color: red;
     }
+
+    #background {
+        background-image: url("formbackground.jpg");
+  background-size: cover;
+  border-style: solid;
+border-width: 5px;
+border-color: black;
+color: white;
+}
+#button-submit {
+margin: 10px;
+background-color: red;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+h3{
+    margin-top: 20px;
+}
 
 center {
 
@@ -38,7 +68,12 @@ center {
 
 .jumbotron {
 margin: 50px;
-background-color: white;
+background-image: url("formbackground.jpg");
+  background-size: cover;
+  border-style: solid;
+border-width: 5px;
+border-color: black;
+color: white;
 }
 
 
