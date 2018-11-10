@@ -12,6 +12,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 var topics = [];
+var apiIndex;
 
 function isValid(inputVal)
 {
@@ -60,6 +61,7 @@ function displayApiInfo(apiNameVal) {
         var apiURL =topics[i].url;
         var apiParam = topics[i].param;   
         var apiSample = topics[i].sample;   
+        apiIndex = i;
         break;
         }
     }
