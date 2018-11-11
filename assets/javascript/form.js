@@ -7,14 +7,32 @@ var config = {
     storageBucket: "api-exploration-838a6.appspot.com",
     messagingSenderId: "526245276523"
   };
+
+firebase.initializeApp(config);
+var database = firebase.database();
+
+var topicInit = [
+    {
+      name: "NYtimes"
+    , description: "NYtimes"
+    , owner: "Gilles"     
+    , authors: ""
+    , docurl: "www"
+    , url: "https://api.nytimes.com/svc/search/v2/articlesearch.json"
+    , param: "&q=trump&facet_field=source&begin_date=20180101&end_date=20181231"
+    , sample: "file:///Users/gillesleroy/Documents/Gilles/UCB/06-%20API%20and%20AJAX/Day-02/09-ClickJSON/Unsolved/nytimes-4.html"
+    }
+];
+// database.ref().set({
+//     apis: topicInit
+//     });  
+var topics = [];
+var apiIndex;
   var namesInit = [{
     name: "dummy"
   , value: ""
   }];
   var names = [];
-  var apiIndex;
-  firebase.initializeApp(config);
-  var database = firebase.database();
 
 function isValid(inputVal)
 {
