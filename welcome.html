@@ -11,6 +11,11 @@
     
         <!--The css link.-->
         <link rel="stylesheet" href="assets/css/welcome.css">
+        <link rel="stylesheet" href="assets/css/reset.css">
+        
+        <!--Javascript and Jquery (lib).-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/javascript/lib.js"></script>
 
 </head>
 
@@ -19,58 +24,64 @@
 <body>
     
     <!--The navigation menu.-->
-    <header><ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">HOME</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">API SEARCH</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">API ENTRY</a>
-                </li>
-            </ul></header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="welcome.html">API Explorer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="welcome.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="search.html">Explore</a>
+            <a class="nav-item nav-link" href="form.html">Contribute</a>
+            </div>
+        </div>
+</nav>
             <br>
 
             <div class="container">
                 
                 <!--The giphys.-->
-                <img id="img_left" src="assets/images/spongebobleft.gif" alt="Spongebob">
-                <img id="img_right" src="assets/images/spongebobright.gif" alt="Spongebob">
-                
+                <div id="left"><img id="img_left" src="assets/images/spongebobleft.gif" alt="Spongebob"></div>
+                <div id="right"><img id="img_right" src="assets/images/spongebobright.gif" alt="Spongebob"></div>
+            
                 <!--The search button.-->
-       <center><button id="api_search">Search Apis</button></center>
+    <center>
+        <button id="api_search">Search Apis</button>
+    </center>
        <br><br>
 
        <!--The registration forms.-->
-           <center><form id="reg_form">
-                    <h3>Register to contribute!</h3>
-                    <br>
-                    <label>Username: </label>
-                        <input type="text" id="user_name" placeholder="ex: ApiGod">
-                        <br>
-                        <label>First Name:</label>
-                        <input type="text" id="first_name" placeholder="ex: John">
-                        <br>
-                        <label>Last Name:</label>
-                        <input type="text" id="last_name" placeholder="ex: Doe">
-                        <br><br>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+
+           <center><div id="background"><form id="reg_form">
+            <h3>Register to contribute!</h3>
+            <br>
+            <label>Username: </label>
+                <input type="text" id="input-username" placeholder="ex: ApiGod">
+                <br>
+                <label>First Name:</label>
+                <input type="text" id="input-firstname" placeholder="ex: John">
+                <br>
+                <label>Last Name:</label>
+                <input type="text" id="input-lastname" placeholder="ex: Doe">
+                <br><br>
+                <button type="submit" id="button-submit">Submit</button>
+            </form></div>
                     <br></center>
                 </div>  
               
 <!--The about us section.-->
     <div class="jumbotron">
-    <h2 id="about_us">About Us</h2>
+    <h1 id="about_us">About Us</h1>
     <hr class="my-4">
-    <p>Input 1</p>
-    <p>Input 2</p>
-    <p>Input 3</p>
+    <b><p>We like Apis!</p>
+        <p>You like Apis!</p>
+        <p>Search our Apis! or Contribute!</p></b>
 </div>
 
+<!--Firebase and Javascript.-->
 <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script>
-<script type="text/javascript" src="assets/javascript/search.js"></script>
+<script type="text/javascript" src="assets/javascript/welcome.js"></script>
 </body>
 
 </html>
