@@ -234,26 +234,27 @@ $("#upd-button").on("click", function(event) {
 
  $("#del-button").on("click", function(event) {
     event.preventDefault();
-    var apiName = $("#input-name").val().trim();
-    names = JSON.parse(localStorage.getItem('names'));
-    if (names === null)
-    {
-        names = namesInit;
-        // console.log(names[0].name);
-    }
-    topics.splice(apiIndex,1);
-    database.ref().set({
-                        apis: topics
-                        });           
-    for (var i=0;i<names.length;i++)
-    {
-        if (names[i].name === apiName)
-        {
-            names.splice(i,1);
-            break;
-        }
-    }        
-    localStorage.setItem('names', JSON.stringify(names));       
+    alert("This button is disabled for now");
+    // var apiName = $("#input-name").val().trim();
+    // names = JSON.parse(localStorage.getItem('names'));
+    // if (names === null)
+    // {
+    //     names = namesInit;
+    //     // console.log(names[0].name);
+    // }
+    // topics.splice(apiIndex,1);
+    // database.ref().set({
+    //                     apis: topics
+    //                     });           
+    // for (var i=0;i<names.length;i++)
+    // {
+    //     if (names[i].name === apiName)
+    //     {
+    //         names.splice(i,1);
+    //         break;
+    //     }
+    // }        
+    // localStorage.setItem('names', JSON.stringify(names));       
 });
 
 function getUrlParam(param)
