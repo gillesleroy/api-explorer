@@ -27,7 +27,7 @@ var topicInit = [
 //     apis: topicInit
 //     });  
 var topics = [];
-var apiIndex;
+var apiIndex = -1;
   var namesInit = [{
     name: "dummy"
   , value: ""
@@ -68,7 +68,7 @@ function displayApiInfo(apiNameVal) {
 //     var apiParam = $(this).attr("api-param");   
 //     var apiSample = $(this).attr("api-sample");   
 //     apiIndex = $(this).attr("api-index"); 
-
+    var isFound = false;
     for (var i=0;i<topics.length;i++)
     {
         if (topics[i].name === apiNameVal)
@@ -82,10 +82,13 @@ function displayApiInfo(apiNameVal) {
         var apiParam = topics[i].param;   
         var apiSample = topics[i].sample;   
         apiIndex = i;
+        isFound = true;
         break;
         }
     }
-
+    if (isFound === false){
+        apiIndex = -1;
+    } 
     // var apiKey = $("#input-key").val().trim();
    
     names = JSON.parse(localStorage.getItem("names"));
@@ -234,27 +237,34 @@ $("#upd-button").on("click", function(event) {
 
  $("#del-button").on("click", function(event) {
     event.preventDefault();
-    alert("This button is disabled for now");
-    // var apiName = $("#input-name").val().trim();
-    // names = JSON.parse(localStorage.getItem('names'));
-    // if (names === null)
-    // {
-    //     names = namesInit;
-    //     // console.log(names[0].name);
-    // }
-    // topics.splice(apiIndex,1);
-    // database.ref().set({
-    //                     apis: topics
-    //                     });           
-    // for (var i=0;i<names.length;i++)
-    // {
-    //     if (names[i].name === apiName)
-    //     {
-    //         names.splice(i,1);
-    //         break;
-    //     }
-    // }        
-    // localStorage.setItem('names', JSON.stringify(names));       
+    // alert("This button is disabled for now");
+    // alert("apiIndex="+apiIndex);
+    if (apiIndex !=-1 && apiIndex != "")
+    {
+        var apiName = $("#input-name").val().trim();
+        names = JSON.parse(localStorage.getItem('names'));
+        if (names === null)
+        {
+            names = namesInit;
+            // console.log(names[0].name);
+        }
+        topics.splice(apiIndex,1);
+        database.ref().set({
+                            apis: topics
+                            });           
+        for (var i=0;i<names.length;i++)
+        {
+            if (names[i].name === apiName)
+            {
+                names.splice(i,1);
+                break;
+            }
+        }        
+        localStorage.setItem('names', JSON.stringify(names));       
+    }
+    else {
+        alert("There is no index defined for deletion");
+    }
 });
 
 function getUrlParam(param)
